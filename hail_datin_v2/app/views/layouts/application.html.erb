@@ -3,12 +3,46 @@
   <head>
     <title>HailDatinV2</title>
     <%= csrf_meta_tags %>
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body background ='http://www.studioremarkable.com/wp-content/uploads/2011/02/Silver-Surfer-Thor-Cover-4.jpg' style="opacity: 1">
+    <div class="nav" style="position:fixed;  right: 0; height: 150px; width: 150px; background-color: light-blue">
+        <span style="color: red; font-size: 18px">
+            <% if current_user %>
+              Signed in as <%= current_user.username %> | <%= link_to "Logout", logout_url %>
+            <% else %>
+              <%= link_to 'Login', new_session_path %> | <%= link_to 'Signup', new_user_path %>
+            <% end %>
+        </span>
+    </div>
+
+    <div class="jumbotron text-center" style="height: 180px">
+      <h1>Hail Datin'</h1>
+      <h3 >A Dating Website for Metalheads, Satanists, and Occult Afficionados</h3>
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-2" style="background-color">
+        <div class="container" style="background-color: white; color: red; font-size: 20px; margin-bottom: 1000px">
+          <%= link_to "Home", current_user %> <br> <br> <br> <br>
+          <% if current_user %>
+            <%= link_to 'Logout', logout_url %> <br> <br> <br> <br>
+          <% else %>
+            <%= link_to "Sign In", new_session_path %> <br> <br> <br> <br>
+          <%end %>
+          <%= link_to "Create a new account", new_user_path %>
+        </div>
+      </div>
+
+
+    <div class="col-md-10">
+      <div class="container" style="background-color: white">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>

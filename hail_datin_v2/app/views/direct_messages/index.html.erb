@@ -1,0 +1,5 @@
+<%= @direct_messages.each do |dm| %>
+<%= dm.title %> <br>
+<%= dm.body %> <br>
+<%= User.find(dm.user_id).username %>
+<% end %>

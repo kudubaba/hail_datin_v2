@@ -1,14 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
 
-<p>
-  <strong>Password:</strong>
-  <%= @user.password %>
-</p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
+<h2>Direct Messages by <%= @user.username %></h2>
+<ol>
+<%= @user.direct_messages.each do |dm| %>
+    <li> <p><%= dm.title %> <br>
+      <%= dm[:body] %></p>
+    </li>
+<% end %>
+</ol>
+
+
+<%= link_to 'Edit', edit_user_path(@user) %>
 <%= link_to 'Back', users_path %>
+<%= link_to 'Create New DM', new_path %>
