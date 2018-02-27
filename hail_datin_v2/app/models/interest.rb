@@ -1,3 +1,2 @@
 class Interest < ApplicationRecord
-  
 end
